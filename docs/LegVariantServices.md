@@ -1,0 +1,11 @@
+# LegVariantServices
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**vehicle_types** | [**list[VehicleType]**](VehicleType.md) | This is a priority list of vehicle types that can be used to describe the vehicle used in this leg. The list is ordered from more specific to less specific vehicle type, to allow for refinements to the list of types to be added over time, and to allow consumers of the API to make more generic distinctions if desired. In the case that this Leg has Services specified, this value will contain the intersection of values given in the individual Services&#x27; &#x60;vehicle_types&#x60; fields.  This property is omitted when no vehicle is involved, such as when &#x60;travel_mode&#x60; is &#x60;walk&#x60;.  | [optional] 
+**path_annotations** | [**list[PathAnnotation]**](PathAnnotation.md) | Array of Path Annotations providing extra metadata about sections of the &#x60;path&#x60;. For instance, in Legs with &#x60;travel_mode&#x60; of &#x60;self_piloted&#x60;, these annotations can indicate sections of the path where the user should dismount their vehicle and walk alongside it due to terrain or restrictions.  Each Path Annotation specifies a &#x60;start_index&#x60; and &#x60;end_index&#x60;, which are indices into the series of coordinates encoded by &#x60;path&#x60;. (For example, an index of &#x60;1&#x60; refers to the coordinate &#x60;(51.51341, -0.08896)&#x60; in the &#x60;path&#x60; example above.)  &#x60;path_annotations&#x60; will contain annotations in order of increasing &#x60;start_index&#x60;, and will not contain overlapped ranges (though multiple annotations can refer to the same coordinate).  | [optional] 
+**services** | [**list[Service]**](Service.md) | Indicates the services that can be used to complete this Leg. This field is omitted when the concept is not relevant, for instance when &#x60;travel_mode&#x60; is &#x60;walk&#x60; or &#x60;self_piloted&#x60; (in non-branded results). When more than one service is listed, that means that alternate equivalent services are available (for instance, two buses or trains that travel between the same set of stops).  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
